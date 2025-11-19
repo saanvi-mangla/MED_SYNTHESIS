@@ -1,0 +1,37 @@
+# GAN refiner training configuration
+
+defaults:
+  - data
+  - model_gan
+
+experiment_name: 'mri2ct_refiner'
+output_dir: 'outputs/refiner'
+checkpoint_dir: 'checkpoints/refiner'
+
+# Pretrained diffusion model
+diffusion_checkpoint: 'checkpoints/diffusion/best_model.pth'
+
+# Training
+epochs: 100
+g_lr: 1.0e-4
+d_lr: 4.0e-4
+weight_decay: 0.0
+grad_clip: null
+use_amp: true
+
+# TTUR (Two Time-Scale Update Rule)
+n_critic: 1  # Train discriminator every n_critic iterations
+
+# Scheduler
+scheduler: 'linear'
+warmup_epochs: 5
+
+# Logging
+log_every: 50
+validate_every: 500
+save_every: 2000
+num_vis_samples: 4
+
+# WandB
+use_wandb: true
+wandb_project: 'mri2ct'

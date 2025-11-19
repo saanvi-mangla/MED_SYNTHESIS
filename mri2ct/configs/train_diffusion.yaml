@@ -1,0 +1,38 @@
+# Diffusion training configuration
+
+defaults:
+  - data
+  - model_diffusion
+
+experiment_name: 'mri2ct_diffusion'
+output_dir: 'outputs/diffusion'
+checkpoint_dir: 'checkpoints/diffusion'
+
+# Training
+epochs: 200
+learning_rate: 1.0e-4
+weight_decay: 0.01
+grad_clip: 1.0
+ema_decay: 0.9999
+use_amp: true
+
+# Scheduler
+scheduler: 'cosine'
+warmup_epochs: 10
+min_lr: 1.0e-6
+
+# Loss weights
+lambda_mse: 1.0
+lambda_charbonnier: 1.0
+lambda_hu_weighted: 0.5
+
+# Logging
+log_every: 50
+validate_every: 1000
+save_every: 5000
+num_vis_samples: 4
+
+# WandB
+use_wandb: true
+wandb_project: 'mri2ct'
+wandb_entity: null

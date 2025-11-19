@@ -1,0 +1,28 @@
+# Inference configuration
+
+# Model checkpoints
+diffusion_checkpoint: 'checkpoints/diffusion/best_model.pth'
+refiner_checkpoint: 'checkpoints/refiner/best_model.pth'
+calibrator_checkpoint: 'checkpoints/calibrator.pkl'
+
+# Sampling
+ddim_steps: 50
+ddim_eta: 0.0
+
+# Uncertainty
+num_mc_samples: 20
+confidence_level: 0.95
+
+# Input/Output
+input_mri: null
+output_dir: 'outputs/inference'
+save_uncertainty: true
+save_coverage_mask: true
+
+# Preprocessing
+apply_n4: true
+normalize_mri: true
+spacing: [1.0, 1.0, 1.0]
+
+# Device
+device: 'cuda'

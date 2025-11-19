@@ -1,0 +1,21 @@
+# Dataset configuration
+
+dataset_name: 'rire'  # 'rire', 'hanseg', or 'synthrad'
+data_root: 'data/rire'
+splits_file: 'data/rire_splits.json'
+
+# Data parameters
+mri_sequence: 't1'  # For RIRE: 't1', 't2', or 'pd'
+region: 'brain'  # For SynthRAD: 'brain' or 'pelvis'
+patch_size: [128, 128, 128]
+spacing: [1.0, 1.0, 1.0]
+
+# Data loading
+batch_size: 2
+num_workers: 4
+pin_memory: true
+augmentation: true
+
+# Normalization
+normalize_mri: true
+ct_hu_range: [-1000, 2000]
